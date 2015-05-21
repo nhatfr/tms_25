@@ -1,6 +1,14 @@
 class Supervisor::SubjectsController < ApplicationController
   before_action :logged_in_user, :require_super
   
+  def index
+    @subjects = Subject.paginate page: params[:page], per_page: 20
+  end
+
+  def show
+    @subject = Subject.find params[:id]
+  end
+
   def new
     @subject = Subject.new
   end
@@ -9,7 +17,7 @@ class Supervisor::SubjectsController < ApplicationController
     @subject = Subject.new subject_params
     if @subject.save
       flash[:success] = t(:subject_created)
-      redirect_to @subject
+      redirect_to supervisor_subject_path(@subject)
     else
       render 'new'
     end
@@ -19,7 +27,7 @@ class Supervisor::SubjectsController < ApplicationController
     @subject = Subject.find params[:id]
     if @subject.update_attributes subject_params
       flash[:success] = t(:subject_updated)
-      redirect_to @subject
+      redirect_to supervisor_subject_path(@subject)
     else
       render 'edit'
     end
@@ -37,6 +45,6 @@ class Supervisor::SubjectsController < ApplicationController
 
   private
   def subject_params
-    params.require(:subject).permit :name, :instruction, tasks_attributes: [:id, :title, :content]
+    params.require(:subject).permit :name, :instruction, tasks_attributes: [:id, :title, :content, :_destroy]
   end
 end

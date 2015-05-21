@@ -1,6 +1,6 @@
 <% provide :title, @subject.name %>
 <div class="panel panel-info">
-  <div class="alert alert-info" role="alert"><span class="user">
+  <div class="alert alert-info" role="alert">
     <h3><%= link_to @subject.name, @subject %></h3>
     <span class="timestamp">
       Posted <%= time_ago_in_words @subject.created_at %> ago.
@@ -11,8 +11,8 @@
           method: :patch, remote: true, class: "user-subject-status btn btn-primary" %>
     <% end %>
   </div>
-  <span class="content">
-    <%= @subject.instruction %>
-  </span>
 </div>
+<span class="content">
+  <%= @subject.instruction %>
+</span>
 <%= render @subject.tasks %>

@@ -5,9 +5,6 @@ class Supervisor::UsersController < ApplicationController
     @users = User.paginate page: params[:page], per_page: 10
   end
 
-  def show
-  end
-
   def new
     @user = User.new
   end
