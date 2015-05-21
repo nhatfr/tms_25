@@ -14,13 +14,14 @@ class Supervisor::CoursesController < ApplicationController
     @course = Course.new course_params
     if @course.save
       flash[:success] = t(:created_course)
-      redirect_to @course
+      redirect_to supervisor_course_path(@course)
     else
       render 'new'
     end
   end
 
   def show
+    @course = Course.find params[:id]
   end
 
   def edit

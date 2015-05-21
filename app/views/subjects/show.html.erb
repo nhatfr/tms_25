@@ -6,8 +6,10 @@
       Posted <%= time_ago_in_words @subject.created_at %> ago.
     </span>
     <% user_subject = user_subject current_user.id, @subject.id %>
-    <%= link_to t(:finish), user_subject_path(user_subject, status: t(:completed)),
-       method: :patch, remote: true, class: "user-subject-status btn btn-primary" %>
+    <% unless user_subject.status == t(:completed) %>
+      <%= link_to t(:finish), user_subject_path(user_subject, status: t(:completed)),
+          method: :patch, remote: true, class: "user-subject-status btn btn-primary" %>
+    <% end %>
   </div>
   <span class="content">
     <%= @subject.instruction %>

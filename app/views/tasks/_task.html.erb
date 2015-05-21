@@ -9,8 +9,11 @@
   <div id="<%= task.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
     <div class="panel-body">
       <% user_task = user_task current_user.id, task.id %>
-      <%= task.content %><%= link_to t(:finish), user_task_path(user_task, status: t(:completed)), 
+      <%= task.content %>
+      <% unless user_task.status == t(:completed) %>
+        <%= link_to t(:finish), user_task_path(user_task, status: t(:completed)), 
                               method: :patch, remote: true, class: "user-task-status btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
