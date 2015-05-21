@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 
 $(document).ajaxError(function(event, xhr, options, exc) {
@@ -25,4 +27,8 @@ $(document).ajaxError(function(event, xhr, options, exc) {
   }
   er += "</ul>"
   $("#error_explanation").html(er);
+});
+
+$(function() {
+  $('.datetimepicker').datetimepicker();
 });
