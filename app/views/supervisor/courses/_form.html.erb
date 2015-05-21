@@ -7,7 +7,10 @@
 <%= f.label :instruction %>
 <%= f.text_area :instruction, class: 'form-control' %>
 
-<%= f.label :creator_id %>
-<%= f.text_area :creator_id, class: 'form-control' %>
+<%= f.label :start_date %>
+<%= f.text_field :start_date, data: {date_format: 'YYYY/MM/DD hh:mm:ss A'}, class: 'form-control datetimepicker', placeholder: 'YYYY/MM/DD hh:mm:ss' %>
+
+<%= f.label :end_date %>
+<%= f.text_field :end_date, data: {date_format: 'YYYY/MM/DD hh:mm:ss A'}, class: 'form-control datetimepicker', placeholder: 'YYYY/MM/DD hh:mm:ss' %>
 
 <%= f.submit t(:submit), class: "btn btn-primary" %>
