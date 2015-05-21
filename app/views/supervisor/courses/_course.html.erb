@@ -1,3 +1,3 @@
 <p class="course_code"> Course code: <%= course.course_code %></p>
-<p class="name"> Course name: <%= link_to course.name, course %></p>
+<p class="name"> Course name: <%= link_to course.name, supervisor_course_path(course) %></p>
 <p class="name"> Session: <%= course.start_date %> - <%= course.end_date %></p>
