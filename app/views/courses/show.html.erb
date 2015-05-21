@@ -2,15 +2,6 @@
 
 <%= render @course %>
 
-<% if current_user.supervisor? %>
-  <%= link_to t(:edit_add_subjects_link), edit_supervisor_course_path %>
-
-  | <%= link_to t(:assign_trainees), supervisor_course_assign_trainees_path(@course) %>
-
-  | <%= link_to t(:delete_link), supervisor_course_path(@course),
-  	method: :delete, data: {confirm: t(:confirm_notification)} %>
-<% end %>
-
 <h3> List of subjects </h3>
 <%= render @course.subjects %>
 

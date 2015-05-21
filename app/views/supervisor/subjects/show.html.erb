@@ -1,0 +1,15 @@
+<% provide :title, @subject.name %>
+<div class="panel panel-info">
+  <div class="alert alert-info" role="alert">
+    <h3><%= link_to @subject.name, @subject %></h3>
+    <span class="timestamp">
+      <%= link_to t(:edit_link), edit_supervisor_subject_path %>
+      <%= link_to t(:delete_link), supervisor_subject_path,
+        method: :delete, data: {confirm: t(:confirm_notification)} %>
+    </span>
+    <span class="content">
+      <%= @subject.instruction %>
+    </span>
+  </div>
+</div>
+<%= render @subject.tasks %>

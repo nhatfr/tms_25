@@ -8,15 +8,6 @@
       </h1>
     </section>
     <%= render @user.courses %>
-    <% @user.user_subjects.each do |us| %>
-      <div class="row">
-        <li>
-          <h4><%= us.subject.name %></h4>
-          <span class="label label-primary"><%= us.status %></span>
-          <%= us.created_at %>
-          <%= render us.subject.tasks %>
-        </li>
-      </div>
-    <% end %>
   </aside>
 </div>
+<%= render @user.activities %>
